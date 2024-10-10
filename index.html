@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <style>
+        div {
+            display: grid;
+            /* gap: 50px; */
+            padding: 10px;
+            text-align: center;
+            justify-content: center;
+        }
+
+        #div {
+            display: grid;
+        }
+
+        span {
+            display: none;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form">
+        <div>
+            <div>
+                First Name:- <input type="text" id="fstname" />
+                <span id="fn1">*Fill the Blank Box</span>
+                <span id="fn12">*Name Should Not Contein Numbers or Special Symbol and Start With
+                    Captial</span>
+            </div>
+            <div>
+                Middle Name:- <input type="text" id="mldname" />
+                <span id="mn1">*Fill the Blank Box</span>
+                <span id="mn12">*Name Should Not Contein Numbers or Special Symbol and Start With
+                    Captial</span>
+            </div>
+            <div>
+                Last Name:- <input type="text" id="lstname" />
+                <span id="ln1">*Fill the Blank Box</span>
+                <span id="ln12">*Name Should Not Contein Numbers or Special Symbol and Start With
+                    Captial</span>
+            </div>
+        </div>
+        <div>
+            Roll Number:- <input type="text" id="rlnum" />
+            <span id="rlnum1">*Fill the Blank Box</span>
+            <span id="rlnum12">*Should start with Given Series</span>
+        </div>
+
+        <div>
+            Email:- <input type="email" id="mail" />
+            <span id="ml1">*Fill the Blank Box</span>
+        </div>
+        <div>
+            Number:- <input type="number" id="num" />
+            <span id="num1">*Fill the Blank Box</span>
+            <span id="num12">*Numbers only Allowed</span>
+        </div>
+        <div><input type="submit" value="Submit" /></div>
+    </form>
+    <div id="div">
+        <h1 id="main"></h1>
+        <p id="id1"></p>
+        <p id="id2"></p>
+        <p id="id3"></p>
+        <p id="id4"></p>
+        <p id="id5"></p>
+        <p id="id6"></p>
+    </div>
+    <script>
+        form = document.getElementById("form");
+
+        fstname = document.getElementById("fstname");
+        fn1 = document.getElementById("fn1");
+        fn12 = document.getElementById("fn12");
+
+        mldname = document.getElementById("mldname");
+        mn1 = document.getElementById("mn1");
+        mn12 = document.getElementById("mn12");
+
+        lstname = document.getElementById("lstname");
+        ls1 = document.getElementById("ls1");
+        ls12 = document.getElementById("ls12");
+
+        rlnum = document.getElementById("rlnum");
+        rlnum1 = document.getElementById("rlnum1");
+        rlnum12 = document.getElementById("rlnum12");
+
+        mail = document.getElementById("mail");
+        ml1 = document.getElementById("ml1");
+
+        num = document.getElementById("num");
+        num1 = document.getElementById("num1");
+        num12 = document.getElementById("num12");
+
+        words = /[A-Z][a-zA-Z]/;
+        rollnumber = /^23g23\d{5}$/;
+        number = /[0-9]/;
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            main = document.getElementById("main");
+            main.innerText = "Check Your Details Here";
+            // // It is for First Name:-
+            if (fstname.value == 0) {
+                fn1.style.display = "block";
+                fstname.style.border = "2px solid red";
+            } else if (!words.test(fstname.value)) {
+                fn12.style.display = "block";
+                fstname.style.border = "2px solid red";
+            } else {
+                fn1.style.display = "none";
+                fn12.style.display = "none";
+                fstname.style.border = "2px solid green";
+            }
+            id1 = document.getElementById("id1");
+            id1.innerHTML = "First Name :- " + fstname.value;
+
+            // // It is for Middle Name:-
+            if (mldname.value == 0) {
+                mn1.style.display = "block";
+                mldname.style.border = "2px solid red";
+            } else if (!words.test(mldname.value)) {
+                mn12.style.display = "block";
+                mldname.style.border = "2px solid red";
+            } else {
+                mn1.style.display = "none";
+                mn12.style.display = "none";
+                mldname.style.border = "2px solid green";
+            }
+            id2 = document.getElementById("id2");
+            id2.innerHTML = "Middle Name:- " + mldname.value;
+
+            // // It is for Last Name:-
+            if (lstname.value == 0) {
+                ln1.style.display = "block";
+                lstname.style.border = "2px solid red";
+            } else if (!words.test(lstname.value)) {
+                ln12.style.display = "block";
+                lstname.style.border = "2px solid red";
+            } else {
+                ln1.style.display = "none";
+                ln12.style.display = "none";
+                lstname.style.border = "2px solid green";
+            }
+            id3 = document.getElementById("id3");
+            id3.innerHTML = "Last Name:- " + lstname.value;
+
+            // It is for Roll Number:-
+            if (rlnum.value == 0) {
+                rlnum1.style.display = "block";
+                rlnum.style.border = "2px solid red";
+            } else if (!rollnumber.test(rlnum.value)) {
+                rlnum12.style.display = "block";
+                rlnum.style.border = "2px solid red";
+            } else {
+                rlnum1.style.display = "none";
+                rlnum12.style.display = "none";
+                rlnum.style.border = "2px solid green";
+            }
+            id4 = document.getElementById("id4");
+            id4.innerHTML = "Roll Number:- " + rlnum.value;
+
+            // // It is for mail:-
+            if (mail.value == 0) {
+                ml1.style.display = "block";
+                mail.style.border = "2px solid red";
+            } else {
+                ml1.style.display = "none";
+                mail.style.border = "2px solid green";
+            }
+            id5 = document.getElementById("id5");
+            id5.innerHTML = "Email:- " + mail.value;
+
+            // // It is for Number:-
+            if (num.value == 0) {
+                num1.style.display = "block";
+                num.style.border = "2px solid red";
+            } else {
+                num1.style.display = "none";
+                num12.style.display = "none";
+                num.style.border = "2px solid green";
+            }
+            id6 = document.getElementById("id6");
+            id6.innerHTML = "Number:- " + num.value;
+        });
+    </script>
+</body>
+
+</html>
